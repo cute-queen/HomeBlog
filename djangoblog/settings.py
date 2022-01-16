@@ -34,8 +34,16 @@ DEBUG = env_to_bool('DJANGO_DEBUG', True)
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['*', '127.0.0.1', 'example.com']
+ALLOWED_HOSTS = ['*', '127.0.0.1']
 # Application definition
+
+# 设置参数，在部署的时候修改成部署数据
+# 数据库名称
+DJANGO_MYSQL_DATABASE = 'djangoblog'
+# 数据库用户名
+DJANGO_MYSQL_USER = 'root'
+# 数据库密码
+DJANGO_MYSQL_PASSWORD = 'chendebi062045.cn'
 
 
 INSTALLED_APPS = [
@@ -102,9 +110,9 @@ WSGI_APPLICATION = 'djangoblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DJANGO_MYSQL_DATABASE') or 'djangoblog',
-        'USER': os.environ.get('DJANGO_MYSQL_USER') or 'root',
-        'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD') or 'djangoblog_123',
+        'NAME': DJANGO_MYSQL_DATABASE,
+        'USER': DJANGO_MYSQL_USER,
+        'PASSWORD': DJANGO_MYSQL_PASSWORD,
         'HOST': os.environ.get('DJANGO_MYSQL_HOST') or '127.0.0.1',
         'PORT': int(
             os.environ.get('DJANGO_MYSQL_PORT') or 3306),
@@ -141,7 +149,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
