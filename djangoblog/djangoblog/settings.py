@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get(
     'DJANGO_SECRET_KEY') or 'n9ceqv38)#&mwuat@(mjb_p%em$e8$qyr#fw9ot!=ba6lijx-6'
 
 #自定义的SECRET_KEY
-SECRET_KEY = 'E7egx8hkvAtuaSQDpY9KJSW2ersDkpzYJcaJpkpnxBmWqZLAY3SU3AvGvtP7zenMNEeMtvqEjvccf6n7AQhAjwceFy8nmSJRFm7cYqUY5NumLK6j2SEffXsu'
+#SECRET_KEY = 'E7egx8hkvAtuaSQDpY9KJSW2ersDkpzYJcaJpkpnxBmWqZLAY3SU3AvGvtP7zenMNEeMtvqEjvccf6n7AQhAjwceFy8nmSJRFm7cYqUY5NumLK6j2SEffXsu'
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = env_to_bool('DJANGO_DEBUG', True)
 DEBUG = True
@@ -43,12 +43,11 @@ ALLOWED_HOSTS = ['*', '127.0.0.1']
 
 # 设置参数，在部署的时候修改成部署数据
 # 数据库名称
-DJANGO_MYSQL_DATABASE = 'blogtest'
+DJANGO_MYSQL_DATABASE = 'blogtestdb'
 # 数据库用户名
-DJANGO_MYSQL_USER = 'root'
+DJANGO_MYSQL_USER = 'blogtest'
 # 数据库密码
 DJANGO_MYSQL_PASSWORD = 'asdfghjkl'
-
 
 INSTALLED_APPS = [
     # 'django.contrib.admin',
