@@ -16,6 +16,9 @@ from owntracks.models import *
 from servermanager.admin import *
 from servermanager.models import *
 
+from todotask.admin import *
+from todotask.models import *
+
 
 class DjangoBlogAdminSite(AdminSite):
     site_header = 'djangoblog administration'
@@ -62,3 +65,5 @@ admin_site.register(OwnTrackLog, OwnTrackLogsAdmin)
 admin_site.register(Site, SiteAdmin)
 
 admin_site.register(LogEntry, LogEntryAdmin)
+
+admin_site.register(TodoTask, TodoTaskAdmin)
