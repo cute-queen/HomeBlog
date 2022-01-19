@@ -1,5 +1,6 @@
 import logging
 from abc import abstractmethod
+from operator import mod
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -12,6 +13,8 @@ from uuslug import slugify
 
 from djangoblog.utils import cache_decorator, cache
 from djangoblog.utils import get_current_site
+
+from todotask.models import Task
 
 logger = logging.getLogger(__name__)
 
@@ -176,6 +179,10 @@ class Category(BaseModel):
         null=True,
         on_delete=models.CASCADE)
     slug = models.SlugField(default='no-slug', max_length=60, blank=True)
+    task = models.ForeignKey(
+        Task, verbose_name='关联任务', 
+        null=True, blank=True,
+        on_delete=models.CASCADE)
     index = models.IntegerField(default=0, verbose_name="权重排序-越大越靠前")
 
     class Meta:

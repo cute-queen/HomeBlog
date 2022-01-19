@@ -66,4 +66,5 @@ admin_site.register(Site, SiteAdmin)
 
 admin_site.register(LogEntry, LogEntryAdmin)
 
-admin_site.register(TodoTask, TodoTaskAdmin)
+admin_site.register(Task, TaskAdmin)
+admin_site.register(Todo, TodoAdmin)
