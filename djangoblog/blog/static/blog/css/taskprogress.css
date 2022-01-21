@@ -1,0 +1,11 @@
+#progress-block
+{
+    height: 60px;
+    background-color: red;
+}
+
+.task
+{
+    height: 60px;
+    background-color: green;
+}

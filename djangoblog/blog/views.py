@@ -2,6 +2,7 @@ import datetime
 import logging
 # Create your views here.
 import os
+from unittest import result
 import uuid
 
 from django import forms
@@ -170,8 +171,17 @@ class CategoryDetailView(ArticleListView):
             categoryname=categoryname, page=self.page_number)
         return cache_key
 
-    def get_context_data(self, **kwargs):
+    def get_task_progress(self):
+        slug = self.kwargs['category_name']
+        category = get_object_or_404(Category, slug=slug)
 
+        if category.task is None:
+            return [False, -1]
+        
+        return [True, category.task.progress]
+
+    def get_context_data(self, **kwargs):
+        
         categoryname = self.categoryname
         try:
             categoryname = categoryname.split('/')[-1]
@@ -179,6 +189,10 @@ class CategoryDetailView(ArticleListView):
             pass
         kwargs['page_type'] = CategoryDetailView.page_type
         kwargs['tag_name'] = categoryname
+        task_result = self.get_task_progress()
+        if task_result[0]:
+            kwargs['display_process'] = True
+            kwargs['task_progress'] = task_result[1]
         return super(CategoryDetailView, self).get_context_data(**kwargs)
 
 

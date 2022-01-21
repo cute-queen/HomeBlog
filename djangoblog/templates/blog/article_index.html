@@ -1,6 +1,7 @@
 {% extends 'share_layout/base.html' %}
 {% load blog_tags %}
 {% load cache %}
+{% load static %}
 {% block header %}
     {% if tag_name %}
         <title>{{ page_type }}:{{ tag_name }} | {{ SITE_DESCRIPTION }}</title>
@@ -15,6 +16,9 @@
     <meta property="og:description" content="{{ SITE_DESCRIPTION }}"/>
     <meta property="og:url" content="{{ SITE_BASE_URL }}"/>
     <meta property="og:site_name" content="{{ SITE_NAME }}"/>
+
+    <link rel='stylesheet' href='{% static 'blog/css/taskprocess.css' %}' type='text/css'
+              media='all'/>
 {% endblock %}
 {% block content %}
     <div id="primary" class="site-content">
@@ -22,7 +26,14 @@
             {% if page_type and tag_name %}
                 <header class="archive-header">
                     <p class="archive-title">{{ page_type }}：<span>{{ tag_name }}</span></p>
-                    <div style = "height: 20px background-color: red">
+                    {% if display_process %}
+                    <div style="height: 60px; background-color: red;  display: flex; justify-content: flex-start;">
+                        <p class="archive-title">当前进度</p>
+                        <div style="background-color: aqua; width: 300px;">
+                        </div>
+                        <p class="archive-title">100%</p>
+                    </div>
+                    {% endif %}
                 </header><!-- .archive-header -->
             {% endif %}
 
