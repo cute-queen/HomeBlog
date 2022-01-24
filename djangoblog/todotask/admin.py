@@ -1,21 +1,51 @@
 
+from multiprocessing import parent_process
 from django.contrib import admin
 from .models import Todo, Task
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
-# Register your models here.
+
+# Update task progress
+def update_task_progress(task):
+    todos = Todo.objects.filter(parent_task = task)
+    finish_num = 0
+    for todo in todos:
+        if todo.progress_status == 'f':
+            finish_num += 1
+        print(todo.progress_status)
+    total_num = len(todos)
+    if total_num > 0 and finish_num <= total_num:
+        task.progress = int(finish_num / len(todos) * 100)
+    else:
+        task.progress = 100
+    task.save()
 
 
 class TodoInline(admin.TabularInline):
     model = Todo
     fk_name = 'parent_task'
     list_display = ('title', 'progress_status')
+    fields = ('title', 'remark', 'progress_status')
 
 
 class TodoAdmin(admin.ModelAdmin):
     list_display = ('title', 'progress_status')
+    fields = ('title', 'remark', 'progress_status')
+
+    def save_model(self, request, obj, form, change):
+        state = super(TodoAdmin, self).save_model(request, obj, form, change)
+        task = obj.parent_task
+        if task:
+            update_task_progress(task)
+        return state
 
 class TaskAdmin(admin.ModelAdmin):
     inlines = [TodoInline]
     list_display = ('title', 'progress')
 
-
+    def save_model(self, request, task, form, change):
+        print(request.POST)
+        status = super(TaskAdmin, self).save_model(request, task, form, change)
+        update_task_progress(task)
+        return status
