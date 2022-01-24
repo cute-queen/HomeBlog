@@ -2,7 +2,7 @@
 from multiprocessing import parent_process
 from django.contrib import admin
 from .models import Todo, Task
-from django.db.models.signals import pre_save
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
@@ -32,20 +32,23 @@ class TodoInline(admin.TabularInline):
 class TodoAdmin(admin.ModelAdmin):
     list_display = ('title', 'progress_status')
     fields = ('title', 'remark', 'progress_status')
-
-    def save_model(self, request, obj, form, change):
+"""
+ def save_model(self, request, obj, form, change):
         state = super(TodoAdmin, self).save_model(request, obj, form, change)
         task = obj.parent_task
         if task:
             update_task_progress(task)
         return state
+"""
 
 class TaskAdmin(admin.ModelAdmin):
     inlines = [TodoInline]
     list_display = ('title', 'progress')
 
-    def save_model(self, request, task, form, change):
-        print(request.POST)
-        status = super(TaskAdmin, self).save_model(request, task, form, change)
+
+@receiver(post_save, sender=Todo)
+def post_todo_update(sender, **kwargs):
+    instance = kwargs['instance']
+    task = instance.parent_task
+    if task:
         update_task_progress(task)
-        return status

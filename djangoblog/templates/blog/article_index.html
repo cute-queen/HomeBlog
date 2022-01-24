@@ -16,9 +16,6 @@
     <meta property="og:description" content="{{ SITE_DESCRIPTION }}"/>
     <meta property="og:url" content="{{ SITE_BASE_URL }}"/>
     <meta property="og:site_name" content="{{ SITE_NAME }}"/>
-
-    <link rel='stylesheet' href='{% static 'blog/css/taskprocess.css' %}' type='text/css'
-              media='all'/>
 {% endblock %}
 {% block content %}
     <div id="primary" class="site-content">
@@ -27,11 +24,16 @@
                 <header class="archive-header">
                     <p class="archive-title">{{ page_type }}：<span>{{ tag_name }}</span></p>
                     {% if display_process %}
-                    <div style="height: 60px; background-color: red;  display: flex; justify-content: flex-start;">
-                        <p class="archive-title">当前进度</p>
-                        <div style="background-color: aqua; width: 300px;">
+                    <div style="height: 32px; margin-top: 12px; display: flex; justify-content: flex-start;">
+                        <p class="archive-title" style="line-height: 32px;">当前进度：</p>
+                        <div style="width: 300px;">
+                            <div style="margin-top: 10px; width: 100%; height: 12px; border-radius: 6px; background-color: #DFDFDF;">
+                                <div style="margin-top: 10px; width: {{ task_progress }}%; height: 12px; border-radius: 6px; background-color: #00C957;">
+                                
+                                </div>
+                            </div>
                         </div>
-                        <p class="archive-title">100%</p>
+                        <p class="archive-title" style="line-height: 32px; margin-left: 12px;">  {{ task_progress }}%</p>
                     </div>
                     {% endif %}
                 </header><!-- .archive-header -->
