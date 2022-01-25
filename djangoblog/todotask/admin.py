@@ -13,7 +13,6 @@ def update_task_progress(task):
     for todo in todos:
         if todo.progress_status == 'f':
             finish_num += 1
-        print(todo.progress_status)
     total_num = len(todos)
     if total_num > 0 and finish_num <= total_num:
         task.progress = int(finish_num / len(todos) * 100)
