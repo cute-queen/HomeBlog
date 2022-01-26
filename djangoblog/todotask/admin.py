@@ -1,5 +1,4 @@
 
-from multiprocessing import parent_process
 from django.contrib import admin
 from .models import Todo, Task
 from django.db.models.signals import post_save
