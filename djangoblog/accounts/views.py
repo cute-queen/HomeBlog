@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 
 
 # Create your views here.
-
+'''
 class RegisterView(FormView):
     form_class = RegisterForm
     template_name = 'account/registration_form.html'
@@ -74,7 +74,7 @@ class RegisterView(FormView):
             return self.render_to_response({
                 'form': form
             })
-
+'''
 
 class LogoutView(RedirectView):
     url = '/login/'
