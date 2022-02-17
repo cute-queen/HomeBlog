@@ -156,7 +156,7 @@ img {
     font-size: 0.785714286rem;
     line-height: 2.181818182;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: none;
     color: #636363;
 }
 
@@ -1222,7 +1222,7 @@ article.format-link header {
     line-height: 2.181818182;
     font-weight: bold;
     font-style: italic;
-    text-transform: uppercase;
+    text-transform: none;
     color: #848484;
     background-color: #ebebeb;
     border-radius: 3px;
@@ -1746,7 +1746,7 @@ img#wpstats {
         border-bottom: 0;
         color: #6a6a6a;
         line-height: 3.692307692;
-        text-transform: uppercase;
+        text-transform: none;
         white-space: nowrap;
     }
 
@@ -2414,7 +2414,7 @@ li #reply-title {
     margin-bottom: 1em;
     font-size: 18px;
     font-weight: 600;
-    text-transform: uppercase;
+    text-transform: none;
     color: #222;
 }
 
