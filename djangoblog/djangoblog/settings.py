@@ -52,6 +52,10 @@ DJANGO_MYSQL_USER = 'blogtest'
 # 数据库密码
 DJANGO_MYSQL_PASSWORD = 'asdfghjkl'
 
+#测试用户
+# username: superuser
+# psword: asdfghjkl
+
 INSTALLED_APPS = [
     # 'django.contrib.admin',
     'django.contrib.admin.apps.SimpleAdminConfig',
@@ -156,7 +160,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -317,3 +321,6 @@ if os.environ.get('DJANGO_ELASTICSEARCH_HOST'):
             'ENGINE': 'djangoblog.elasticsearch_backend.ElasticSearchEngine',
         },
     }
+
+# 高德地图开发者api
+AMAP_DEVELOP_KEY = '74b36b52c925d1b93ef4bdef9089348c'

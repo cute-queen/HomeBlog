@@ -14,6 +14,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import OwnTrackLog
 
+from django.conf import settings
+
 logger = logging.getLogger(__name__)
 
 
@@ -76,7 +78,7 @@ def convert_to_amap(locations):
         datas = ';'.join(
             set(map(lambda x: str(x.lon) + ',' + str(x.lat), item)))
 
-        key = '8440a376dfc9743d8924bf0ad141f28e'
+        key = settings.AMAP_DEVELOP_KEY
         api = 'http://restapi.amap.com/v3/assistant/coordinate/convert'
         query = {
             'key': key,
@@ -85,6 +87,7 @@ def convert_to_amap(locations):
         }
         rsp = requests.get(url=api, params=query)
         result = json.loads(rsp.text)
+        print(rsp.text)
         convert_result.append(result['locations'])
         item = list(itertools.islice(it, 30))
 

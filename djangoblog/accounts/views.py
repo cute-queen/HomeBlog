@@ -1,6 +1,6 @@
 import logging
 
-from django.conf import settings
+from django.conf import SettingsReference, settings
 from django.contrib import auth
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.contrib.auth import get_user_model
