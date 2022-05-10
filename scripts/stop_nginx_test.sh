@@ -16,3 +16,5 @@ work_path=$(dirname "$PWD")
 sudo rm /etc/nginx/sites-enabled/nginx_test.conf
 
 check_status "停止nginx测试失败，需要使用root权限执行此脚本"
+
+echo "已经停止nginx测试"
