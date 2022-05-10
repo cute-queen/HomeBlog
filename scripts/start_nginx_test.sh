@@ -13,4 +13,4 @@ check_status() {
 # 工作目录
 work_path=$(dirname "$PWD")
 
-echo "$work_path/conf/nginx_test.conf"
+echo [password] sudo ln -s "$work_path/conf/nginx_test.conf" /etc/nginx/sites-enabled
