@@ -20,6 +20,7 @@ nginx -v
 # 安装nginx
 if [ $? -ne 0 ]; then
     echo [password] | sudo -s apt install nginx
+    echo "y" >&0
     nginx -v
     check_status "安装nginx失败，请手动安装"
 fi
