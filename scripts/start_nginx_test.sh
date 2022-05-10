@@ -13,4 +13,6 @@ check_status() {
 # 工作目录
 work_path=$(dirname "$PWD")
 
-echo [password] sudo ln -s "$work_path/conf/nginx_test.conf" /etc/nginx/sites-enabled
+sudo ln -s "$work_path/conf/nginx_test.conf" /etc/nginx/sites-enabled
+
+check_status "启用nginx测试失败，请使用root权限启用此脚本"
