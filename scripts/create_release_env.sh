@@ -21,7 +21,12 @@ python3 -m venv venv
 
 check_status "创建虚拟环境失败，请检查python环境是否安装"
 
-# 启用虚拟环境
+# 安装mysql
+sudo apt install mysql-server-8.0
+
+mysql --version
+
+check_status "安装mysql失败"
 
 # 安装库
 venv/bin/pip3 install -r "$work_path/conf/requirements.txt" -i https://pypi.tuna.tsinghua.edu.cn/simple/
