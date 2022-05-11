@@ -13,6 +13,10 @@ check_status() {
 # 工作目录
 work_path=$(dirname "$PWD")
 
+sudo service nginx stop
+
+check_status "停止nginx失败，需要使用root权限执行此脚本"
+
 sudo rm /etc/nginx/sites-enabled/nginx_test.conf
 
 check_status "停止nginx测试失败，需要使用root权限执行此脚本"

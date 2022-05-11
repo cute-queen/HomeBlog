@@ -21,4 +21,11 @@ python3 -m venv venv
 
 check_status "创建虚拟环境失败，请检查python环境是否安装"
 
-# 
+# 启用虚拟环境
+
+source ./venv/bin/active
+
+check_status "启用python虚拟环境失败"
+
+# 安装库
+pip install -r "$work_path/conf/requirements.txt"
