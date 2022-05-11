@@ -24,4 +24,4 @@ check_status "创建虚拟环境失败，请检查python环境是否安装"
 # 启用虚拟环境
 
 # 安装库
-venv/bin/pip3 install -r $work_path/conf/requirements.txt https://pypi.tuna.tsinghua.edu.cn/simple/
+venv/bin/pip3 install -r "$work_path/conf/requirements.txt" -i https://pypi.tuna.tsinghua.edu.cn/simple/
