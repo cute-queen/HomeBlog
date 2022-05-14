@@ -1,5 +1,5 @@
 from cgitb import text
-import sys
+import os
 import json
 from pathlib import Path
 
@@ -16,6 +16,7 @@ def write_to_temp_file(fname, text):
     fpath = '{0}/temp/{1}'.format(BASE_DIR,fname)
     with open(fpath, 'w', encoding='utf8') as fp:
         fp.write(text)
+    return fpath
 
 def create_uwsgi_ini_file(config):
     fpath = '{0}/conf/uwsgi_template.ini'.format(BASE_DIR)
@@ -24,8 +25,8 @@ def create_uwsgi_ini_file(config):
         text = fp.read()
     webname = config['website']
     config_text = text.format(config['port'], BASE_DIR, webname)
-    fname = '{0}_uwsgi.conf'.format(webname)
-    write_to_temp_file(fname, config_text)
+    fname = '{0}_uwsgi.ini'.format(webname)
+    return write_to_temp_file(fname, config_text)
 
 def create_nginx_config_file(config):
     fpath = '{0}/conf/nginx_template.conf'.format(BASE_DIR)
@@ -36,7 +37,7 @@ def create_nginx_config_file(config):
     webname = config['website']
     config_text = text.format(webname, config['port'], server_names, BASE_DIR)
     fname = '{0}_nginx.conf'.format(webname)
-    write_to_temp_file(fname, config_text)
+    return write_to_temp_file(fname, config_text)
 
 if __name__ == '__main__':
     config = get_config()

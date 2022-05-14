@@ -22,3 +22,10 @@ mkdir logs
 python3 './scripts/create_file.py'
 
 check_status "创建配置文件失败"
+
+# 安装json解析库
+sudo apt-get install jq
+
+check_status "安装json解析库失败"
+
+cat $work_path/conf/settings.json
