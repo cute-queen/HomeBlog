@@ -39,13 +39,6 @@ def create_nginx_config_file(config):
     write_to_temp_file(fname, config_text)
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        config = get_config()
-        if sys.argv[1] == 'nginx':
-            create_nginx_config_file(config)
-        elif sys.argv[1] == 'uwsgi':
-            create_uwsgi_ini_file(config)
-        else:
-            print("配置类型错误")
-    else:
-        print('输入需要生成的配置类型: nginx或者uwsgi')
+    config = get_config()
+    create_nginx_config_file(config)
+    create_uwsgi_ini_file(config)
