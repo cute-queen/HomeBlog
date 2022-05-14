@@ -28,7 +28,9 @@ sudo apt-get install jq
 
 check_status "安装json解析库失败"
 
-settings_path = $work_path/conf/settings.json
+settings_path = "$work_path/conf/settings.json"
+
+echo $settings_path
 
 config = $(cat $settings_path)
 
