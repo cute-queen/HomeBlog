@@ -11,13 +11,24 @@ check_status() {
   fi
 }
 
+check_create_folder() {
+  if [ ! -d $1 ];then
+  mkdir $1
+}
+
+check_remove_file() {
+  if [ -d $1 ];then
+    sudo rm $1
+}
+
 # 工作目录
 work_path=$(dirname "$PWD")
 
 cd $work_path
 
-mkdir temp
-mkdir logs
+check_create_folder temp
+
+check_create_folder logs
 
 python3 './scripts/create_file.py'
 
@@ -32,6 +43,8 @@ check_status "安装json解析库失败"
 site_name=$(cat ${work_path}/conf/settings.json | jq -r .website)
 
 nginx_file="${work_path}/temp/${site_name}.conf"
+
+check_remove_file nginx_file
 
 sudo ln -s $nginx_file /etc/nginx/sites-enabled
 

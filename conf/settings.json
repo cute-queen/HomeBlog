@@ -1,5 +1,6 @@
 {
     "website": "mugao",
-    "server_names": ["example.com"],
-    "port": 8080
+    "server_names": ["localhost"],
+    "port": 8080,
+    "listen_port": 80
 }

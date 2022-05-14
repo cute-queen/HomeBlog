@@ -35,7 +35,7 @@ def create_nginx_config_file(config):
         text = fp.read()
     server_names = ' '.join(config['server_names'])
     webname = config['website']
-    config_text = text.format(webname, config['port'], server_names, BASE_DIR)
+    config_text = text.format(webname, config['port'], server_names, BASE_DIR, config["listen_port"])
     fname = '{0}.conf'.format(webname)
     return write_to_temp_file(fname, config_text)
 
