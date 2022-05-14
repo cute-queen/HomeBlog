@@ -16,16 +16,6 @@ work_path=$(dirname "$PWD")
 
 cd $work_path
 
-while getopts u:p: opt;
-do
-case $opt in
-u) user = $OPTARG
-   ;;
-p) port = $OPTARG
-   ;;
-?) echo "$opt is an invalid option"
-   ;;
-esac
-done
+python3 '$work_path/scripts/create_file.py'
 
-echo '$user $port'
+check_status "创建配置文件失败"
