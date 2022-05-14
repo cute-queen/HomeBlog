@@ -19,6 +19,7 @@ check_create_folder() {
 
 check_remove_file() {
   if [ -d $1 ];then
+    echo "remove $1"
     sudo rm $1
   fi
 }
