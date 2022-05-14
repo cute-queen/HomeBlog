@@ -20,6 +20,7 @@ check_create_folder() {
 check_remove_file() {
   if [ -d $1 ];then
     sudo rm $1
+  fi
 }
 
 # 工作目录
