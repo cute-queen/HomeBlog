@@ -28,7 +28,7 @@ sudo apt-get install jq
 
 check_status "安装json解析库失败"
 
-site_name = `echo ${cat $work_path/conf/settings.json | jq .website}`
+site_name = `echo $cat ${work_path}/conf/settings.json | jq .website`
 
 nginx_file = '${work_path}/temp/${site_name}.conf'
 
