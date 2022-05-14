@@ -16,7 +16,7 @@ work_path=$(dirname "$PWD")
 
 cd $work_path
 
-while getopts u:p: opt;
+while getopts t:p: opt;
 do
 case $opt in
 u) user = $OPTARG
