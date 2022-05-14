@@ -46,7 +46,7 @@ site_name=$(cat ${work_path}/conf/settings.json | jq -r .website)
 
 nginx_file="${work_path}/temp/${site_name}.conf"
 
-check_remove_file nginx_file
+check_remove_file $nginx_file
 
 sudo ln -s $nginx_file /etc/nginx/sites-enabled
 
