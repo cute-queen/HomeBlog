@@ -16,6 +16,9 @@ work_path=$(dirname "$PWD")
 
 cd $work_path
 
+mkdir temp
+mkdir logs
+
 python3 './scripts/create_file.py'
 
 check_status "创建配置文件失败"
