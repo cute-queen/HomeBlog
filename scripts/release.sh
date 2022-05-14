@@ -31,8 +31,6 @@ check_status "安装json解析库失败"
 
 site_name=$(cat ${work_path}/conf/settings.json | jq .website)
 
-echo $site_name
-
-#nginx_file = '${work_path}/temp/${site_name}.conf'
+nginx_file = '${work_path}/temp/${site_name}.conf'
 
 echo $nginx_file
