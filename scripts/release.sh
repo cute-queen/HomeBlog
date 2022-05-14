@@ -14,6 +14,7 @@ check_status() {
 check_create_folder() {
   if [ ! -d $1 ];then
   mkdir $1
+  fi
 }
 
 check_remove_file() {
