@@ -23,6 +23,16 @@ check_remove_file() {
   fi
 }
 
+check_install_app() {
+  local ret='0'
+  command -v $1 >/dev/null 2>&1 || { local ret='1'; }
+
+  # fail on non-zero return value
+  if [ "$ret" -ne 0 ]; then
+    sudo apt-get install $1
+  fi
+}
+
 # 工作目录
 work_path=$(dirname "$PWD")
 
@@ -37,10 +47,7 @@ python3 './scripts/create_file.py'
 check_status "创建配置文件失败"
 
 # 安装json解析库
-sudo apt-get install jq
-
-check_status "安装json解析库失败"
-
+check_install_app jq
 
 site_name=$(cat ${work_path}/conf/settings.json | jq -r .website)
 
