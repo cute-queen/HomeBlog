@@ -25,7 +25,7 @@ def create_uwsgi_ini_file(config):
         text = fp.read()
     webname = config['website']
     config_text = text.format(config['port'], BASE_DIR, webname)
-    fname = '{0}_uwsgi.ini'.format(webname)
+    fname = '{0}.ini'.format(webname)
     return write_to_temp_file(fname, config_text)
 
 def create_nginx_config_file(config):
@@ -36,7 +36,7 @@ def create_nginx_config_file(config):
     server_names = ' '.join(config['server_names'])
     webname = config['website']
     config_text = text.format(webname, config['port'], server_names, BASE_DIR)
-    fname = '{0}_nginx.conf'.format(webname)
+    fname = '{0}.conf'.format(webname)
     return write_to_temp_file(fname, config_text)
 
 if __name__ == '__main__':
