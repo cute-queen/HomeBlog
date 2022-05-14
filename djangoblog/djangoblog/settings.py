@@ -50,11 +50,7 @@ DJANGO_MYSQL_DATABASE = 'blogtestdb'
 # 数据库用户名
 DJANGO_MYSQL_USER = 'blogtest'
 # 数据库密码
-DJANGO_MYSQL_PASSWORD = 'asdfghjkl'
-
-#测试用户
-# username: superuser
-# psword: asdfghjkl
+DJANGO_MYSQL_PASSWORD = 'blogtestpassword'
 
 INSTALLED_APPS = [
     # 'django.contrib.admin',
