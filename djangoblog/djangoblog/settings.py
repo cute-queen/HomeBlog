@@ -50,7 +50,7 @@ DJANGO_MYSQL_DATABASE = 'blogtestdb'
 # 数据库用户名
 DJANGO_MYSQL_USER = 'blogtest'
 # 数据库密码
-DJANGO_MYSQL_PASSWORD = 'blogtestpassword'
+DJANGO_MYSQL_PASSWORD = 'asdfghjkl'
 
 INSTALLED_APPS = [
     # 'django.contrib.admin',
@@ -61,7 +61,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django.contrib.sitemaps',
+    'django.contrib.sitemaps'
+]
+
+INSTALLED_BLOG_APPS = [
     'mdeditor',
     'haystack',
     'blog',
@@ -73,6 +76,8 @@ INSTALLED_APPS = [
     'compressor',
     'todotask'
 ]
+
+INSTALLED_APPS += INSTALLED_BLOG_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -320,3 +325,9 @@ if os.environ.get('DJANGO_ELASTICSEARCH_HOST'):
 
 # 高德地图开发者api
 AMAP_DEVELOP_KEY = '74b36b52c925d1b93ef4bdef9089348c'
+
+
+if __name__ == '__main__':
+    for app in INSTALLED_BLOG_APPS:
+        os.system('python {0}/manage.py makemigrations {1}'.format(BASE_DIR,app))
+    os.system('python {0}/manage.py migrate {1}'.format(BASE_DIR,app))
