@@ -30,7 +30,7 @@ check_status "安装json解析库失败"
 
 settings_path = "$work_path/conf/settings.json"
 
-echo $settings_path
+echo settings_path
 
 config = $(cat $settings_path)
 
