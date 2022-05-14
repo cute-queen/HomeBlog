@@ -82,3 +82,4 @@ werobot_session.db
 bin/datas/
 .DS_Store
 djangoblog/djangoblog/whoosh_index
+.vscode/settings.json
