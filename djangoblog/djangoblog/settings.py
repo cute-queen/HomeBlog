@@ -330,4 +330,4 @@ AMAP_DEVELOP_KEY = '74b36b52c925d1b93ef4bdef9089348c'
 if __name__ == '__main__':
     for app in INSTALLED_BLOG_APPS:
         os.system('python {0}/manage.py makemigrations {1}'.format(BASE_DIR,app))
-    os.system('python {0}/manage.py migrate'.format(BASE_DIR,app))
+    os.system('python {0}/manage.py migrate'.format(BASE_DIR))

@@ -16,6 +16,10 @@ work_path=$(dirname "$PWD")
 
 cd $work_path
 
+# 创建文件夹
+mkdir temp
+mkdir logs
+
 # 创建python虚拟环境
 python3 -m venv venv
 
