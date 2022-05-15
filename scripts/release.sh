@@ -58,9 +58,6 @@ python3 './scripts/create_file.py'
 
 check_status "创建配置文件失败"
 
-# 生成静态文件
-venv/bin/python3 ./djangoblog/manage.py collectstatic
-
 # 安装json解析库
 check_install_app jq
 
