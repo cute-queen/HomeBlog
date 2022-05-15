@@ -44,7 +44,7 @@ check_create_folder logs
 
 python3 './scripts/create_file.py'
 
-python3 ./djangoblog/manage.py collectstatic
+venv/bin/python3 ./djangoblog/manage.py collectstatic
 
 check_status "创建配置文件失败"
 
