@@ -44,6 +44,8 @@ check_create_folder logs
 
 python3 './scripts/create_file.py'
 
+python3 ./djangoblog/manage.py collectstatic
+
 check_status "创建配置文件失败"
 
 # 安装json解析库
@@ -68,5 +70,5 @@ if [ -f "${work_path}/temp/${site_name}.pid" ];then
   venv/bin/uwsgi --stop "${work_path}/temp/${site_name}.pid"
 fi
 
-echo "正在重启uwsgi服务"
+echo "正在启动uwsgi服务"
 venv/bin/uwsgi --ini "${work_path}/temp/${site_name}.ini"
