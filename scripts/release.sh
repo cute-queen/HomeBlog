@@ -42,11 +42,24 @@ check_create_folder temp
 
 check_create_folder logs
 
+# 关闭uwsgi
+# uwsgi开启
+if [ -f "${work_path}/temp/${site_name}.pid" ];then
+  echo "正在关闭uwsgi服务"
+  echo "${work_path}/temp/${site_name}.pid"
+  venv/bin/uwsgi --stop "${work_path}/temp/${site_name}.pid"
+fi
+
+# 生成数据库
+python3 ./djangoblog/djangoblog/settings.py
+
+# 创建配置文件
 python3 './scripts/create_file.py'
 
-venv/bin/python3 ./djangoblog/manage.py collectstatic
-
 check_status "创建配置文件失败"
+
+# 生成静态文件
+venv/bin/python3 ./djangoblog/manage.py collectstatic
 
 # 安装json解析库
 check_install_app jq
@@ -55,20 +68,15 @@ site_name=$(cat ${work_path}/conf/settings.json | jq -r .website)
 
 nginx_file="${work_path}/temp/${site_name}.conf"
 
+echo "正在移除nginx配置文件"
 check_remove_file "/etc/nginx/sites-enabled/${site_name}.conf"
 
+echo "正在拷贝nginx配置文件"
 sudo ln -s $nginx_file /etc/nginx/sites-enabled
 
+echo "正在重启nginx"
 sudo /etc/init.d/nginx restart
 
-
-
-# uwsgi开启
-if [ -f "${work_path}/temp/${site_name}.pid" ];then
-  echo "正在关闭uwsgi服务"
-  echo "${work_path}/temp/${site_name}.pid"
-  venv/bin/uwsgi --stop "${work_path}/temp/${site_name}.pid"
-fi
 
 echo "正在启动uwsgi服务"
 venv/bin/uwsgi --ini "${work_path}/temp/${site_name}.ini"
