@@ -66,4 +66,4 @@ if [ -f "${work_path}/temp/${site_name}.pid" ];then
   venv/bin/uwsgi --stop "${work_path}/temp/${site_name}.pid"
 fi
 
-venv/bin/uwsgi --start "${work_path}/temp/${site_name}.ini"
+venv/bin/uwsgi --ini "${work_path}/temp/${site_name}.ini"
