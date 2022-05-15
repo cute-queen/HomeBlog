@@ -51,10 +51,10 @@ if [ -f "${work_path}/temp/${site_name}.pid" ];then
 fi
 
 # 生成数据库
-python3 ./djangoblog/djangoblog/settings.py
+venv/bin/python3 ./djangoblog/djangoblog/settings.py
 
 # 创建配置文件
-python3 './scripts/create_file.py'
+venv/bin/python3 './scripts/create_file.py'
 
 check_status "创建配置文件失败"
 
