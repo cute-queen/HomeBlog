@@ -54,7 +54,7 @@ fi
 venv/bin/python3 ./djangoblog/djangoblog/settings.py
 
 # 创建配置文件
-venv/bin/python3 './scripts/create_file.py'
+python3 './scripts/create_file.py'
 
 check_status "创建配置文件失败"
 
