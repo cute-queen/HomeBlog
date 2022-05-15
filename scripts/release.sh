@@ -50,7 +50,7 @@ if [ -f "${work_path}/temp/${site_name}.pid" ];then
   venv/bin/uwsgi --stop "${work_path}/temp/${site_name}.pid"
 fi
 
-# 生成数据库
+# 数据库升级
 venv/bin/python3 ./djangoblog/djangoblog/settings.py
 
 # 创建配置文件
