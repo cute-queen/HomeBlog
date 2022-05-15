@@ -58,3 +58,10 @@ check_remove_file "/etc/nginx/sites-enabled/${site_name}.conf"
 sudo ln -s $nginx_file /etc/nginx/sites-enabled
 
 sudo /etc/init.d/nginx restart
+
+# uwsgi开启
+if [ -f "${work_path}/temp/${site_name}.pid" ];then
+  uwsgi --stop "${work_path}/temp/${site_name}.pid"
+fi
+
+uwsgi --start "${work_path}/temp/${site_name}.ini"
