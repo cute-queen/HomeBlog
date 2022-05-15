@@ -63,7 +63,10 @@ sudo /etc/init.d/nginx restart
 
 # uwsgi开启
 if [ -f "${work_path}/temp/${site_name}.pid" ];then
+  echo "正在关闭uwsgi服务"
+  echo "${work_path}/temp/${site_name}.pid"
   venv/bin/uwsgi --stop "${work_path}/temp/${site_name}.pid"
 fi
 
+echo "正在重启uwsgi服务"
 venv/bin/uwsgi --ini "${work_path}/temp/${site_name}.ini"
