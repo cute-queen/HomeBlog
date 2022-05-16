@@ -9,7 +9,6 @@ import string
 import uuid
 from hashlib import sha256
 
-import re
 import requests
 from django.contrib.sites.models import Site
 from django.core.cache import cache
@@ -94,10 +93,6 @@ def get_current_site():
     site = Site.objects.get_current()
     return site
 
-def change_formula(matched):
-    formula = matched.group(0)
-    formula = formula.replace('_', ' _')
-    return '\n<p>'+formula+'</p>\n'
 
 class CommonMarkdown:
     @staticmethod
@@ -111,7 +106,7 @@ class CommonMarkdown:
                 'tables',
             ]
         )
-        body = md.convert(re.sub(r'\$\$(.+?)\$\$', change_formula, value))
+        body = md.convert(value)
         toc = md.toc
         return body, toc
 
