@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url
 from django.views.decorators.cache import cache_page
 
 from . import views
@@ -58,4 +59,5 @@ urlpatterns = [
     path(
         r'refresh',
         views.refresh_memcache,
-        name='refresh')]
+        name='refresh')
+    ]

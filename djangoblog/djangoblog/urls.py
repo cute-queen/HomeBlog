@@ -41,6 +41,7 @@ urlpatterns = [
                   url(r'mdeditor/', include('mdeditor.urls')),
                   url(r'', include('comments.urls', namespace='comment')),
                   url(r'', include('accounts.urls', namespace='account')),
+                  url(r'appapi/', include('apprequest.urls', namespace='apprequest')),
                   url(r'', include('oauth.urls', namespace='oauth')),
                   url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
                       name='django.contrib.sitemaps.views.sitemap'),

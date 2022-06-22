@@ -3,11 +3,14 @@ from django.contrib.admin.models import LogEntry
 from django.contrib.sites.admin import SiteAdmin
 from django.contrib.sites.models import Site
 
+from accounts.models import *
 from accounts.admin import *
 from blog.admin import *
 from blog.models import *
 from comments.admin import *
 from comments.models import *
+from apprequest.admin import *
+from apprequest.models import *
 from djangoblog.logentryadmin import LogEntryAdmin
 from oauth.admin import *
 from oauth.models import *
@@ -54,6 +57,9 @@ admin_site.register(commands, CommandsAdmin)
 admin_site.register(EmailSendLog, EmailSendLogAdmin)
 
 admin_site.register(BlogUser, BlogUserAdmin)
+admin_site.register(AppLoginSession, AppLoginSessionAdmin)
+admin_site.register(AppImageCategory, AppImageCategoryAdmin)
+admin_site.register(AppUploadImage, AppUploadImageAdmin)
 
 admin_site.register(Comment, CommentAdmin)
 

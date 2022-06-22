@@ -5,6 +5,10 @@ from django.core.cache import cache
 
 from djangoblog.utils import send_email
 
+import json
+
+from .models import BlogUser
+
 _code_ttl = timedelta(minutes=5)
 
 

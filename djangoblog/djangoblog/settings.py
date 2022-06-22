@@ -73,7 +73,8 @@ INSTALLED_BLOG_APPS = [
     'servermanager',
     'owntracks',
     'compressor',
-    'todotask'
+    'todotask',
+    'apprequest'
 ]
 
 INSTALLED_APPS += INSTALLED_BLOG_APPS

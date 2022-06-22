@@ -24,5 +24,5 @@ urlpatterns = [url(r'^login/$',
                    name='forget_password'),
                url(r'^forget_password_code/$',
                    views.ForgetPasswordEmailCode.as_view(),
-                   name='forget_password_code'),
+                   name='forget_password_code')
                ]

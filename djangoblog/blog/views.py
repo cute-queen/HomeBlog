@@ -2,6 +2,7 @@ import datetime
 import logging
 # Create your views here.
 import os
+from unicodedata import category
 from unittest import result
 import uuid
 
@@ -18,6 +19,8 @@ from django.views.generic.list import ListView
 from blog.models import Article, Category, Tag, Links, LinkShowType
 from comments.forms import CommentForm
 from djangoblog.utils import cache, get_sha256, get_blog_setting
+
+import json
 
 logger = logging.getLogger(__name__)
 

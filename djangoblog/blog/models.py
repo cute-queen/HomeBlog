@@ -48,7 +48,7 @@ class BaseModel(models.Model):
 
     def get_full_url(self):
         site = get_current_site().domain
-        url = "https://{site}{path}".format(site=site,
+        url = "http://{site}{path}".format(site=site,
                                             path=self.get_absolute_url())
         return url
 

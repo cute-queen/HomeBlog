@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
 from django.utils.timezone import now
-
+from django.conf import settings
 from djangoblog.utils import get_current_site
 
 
@@ -33,3 +33,4 @@ class BlogUser(AbstractUser):
         verbose_name = "用户"
         verbose_name_plural = verbose_name
         get_latest_by = 'id'
+    
