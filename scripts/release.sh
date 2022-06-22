@@ -47,6 +47,9 @@ check_create_folder logs
 if [ -f "${work_path}/temp/${site_name}.pid" ];then
   echo "正在关闭uwsgi服务"
   echo "${work_path}/temp/${site_name}.pid"
+  echo "准备开启uwsgi服务中"
+  sleep 6
+  echo "正在开启uwsgi服务"
   venv/bin/uwsgi --stop "${work_path}/temp/${site_name}.pid"
 fi
 
